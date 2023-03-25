@@ -1,4 +1,4 @@
-module github.com/88250/gulu
+module github.com/K-Sillot/gulu
 
 go 1.18
 
