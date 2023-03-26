@@ -8,7 +8,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
-          go-version: '1.17'
+          go-version: '1.20'
       - name: Check out code
         uses: actions/checkout@v2
       - name: Install dependencies
@@ -16,7 +16,7 @@ jobs:
           go mod download
       - name: Run Unit tests
         run: |
-          go test -coverprofile=covprofile -coverpkg="github.com/88250/gulu" ./...
+          go test -coverprofile=covprofile -coverpkg="github.com/K-Sillot/gulu" ./...
       - name: Install goveralls
         run: go install github.com/mattn/goveralls@latest
       - name: Send coverage
