@@ -49,7 +49,7 @@ func TestRemoveEmptyDirs(t *testing.T) {
 		t.Errorf("make dir [%s] failed: %s", testPath, err)
 	}
 	test := filepath.Join(a, "test")
-	if err := os.WriteFile(test, []byte(""), 0744); nil != err {
+	if err := os.WriteFile(test, []byte(""), 0644); nil != err {
 		t.Errorf("write file [%s] failed: %s", test, err)
 	}
 
@@ -95,7 +95,7 @@ func TestIsValidFilename(t *testing.T) {
 func TestWriteFileSaferByReader(t *testing.T) {
 	writePath := "testdata/filewrite.go"
 	defer os.RemoveAll(writePath)
-	if err := File.WriteFileSaferByReader(writePath, strings.NewReader("test"), 0744); nil != err {
+	if err := File.WriteFileSaferByReader(writePath, strings.NewReader("test"), 0644); nil != err {
 		t.Errorf("write file [%s] failed: %s", writePath, err)
 	}
 }
@@ -104,7 +104,7 @@ func TestWriteFileSaferWithoutChangeTime(t *testing.T) {
 	writePath := "testdata/filewrite.go"
 	defer os.RemoveAll(writePath)
 
-	if err := os.WriteFile(writePath, []byte("0"), 0744); nil != err {
+	if err := os.WriteFile(writePath, []byte("0"), 0644); nil != err {
 		t.Fatalf("write file [%s] failed: %s", writePath, err)
 	}
 
@@ -114,7 +114,7 @@ func TestWriteFileSaferWithoutChangeTime(t *testing.T) {
 	}
 	modTime1 := info.ModTime()
 
-	if err = File.WriteFileSaferWithoutChangeTime(writePath, []byte("test"), 0744); nil != err {
+	if err = File.WriteFileSaferWithoutChangeTime(writePath, []byte("test"), 0644); nil != err {
 		t.Errorf("write file [%s] failed: %s", writePath, err)
 	}
 
@@ -129,7 +129,7 @@ func TestWriteFileSaferWithoutChangeTime(t *testing.T) {
 
 	writePath1 := "testdata/filewrite1.go"
 	defer os.RemoveAll(writePath1)
-	if err = File.WriteFileSaferWithoutChangeTime(writePath1, []byte("test"), 0744); nil != err {
+	if err = File.WriteFileSaferWithoutChangeTime(writePath1, []byte("test"), 0644); nil != err {
 		t.Errorf("write file [%s] failed: %s", writePath, err)
 	}
 	info, err = os.Stat(writePath1)
@@ -144,7 +144,7 @@ func TestWriteFileSafer(t *testing.T) {
 	writePath := "testdata/filewrite.go"
 	defer os.RemoveAll(writePath)
 
-	if err := os.WriteFile(writePath, []byte("0"), 0744); nil != err {
+	if err := os.WriteFile(writePath, []byte("0"), 0644); nil != err {
 		t.Fatalf("write file [%s] failed: %s", writePath, err)
 	}
 
@@ -153,7 +153,7 @@ func TestWriteFileSafer(t *testing.T) {
 		t.Fatalf("stat file [%s] failed: %s", writePath, err)
 	}
 
-	if err = File.WriteFileSafer(writePath, []byte("test"), 0744); nil != err {
+	if err = File.WriteFileSafer(writePath, []byte("test"), 0644); nil != err {
 		t.Errorf("write file [%s] failed: %s", writePath, err)
 	}
 
@@ -211,7 +211,7 @@ func TestIsDir(t *testing.T) {
 
 func TestCopyDir(t *testing.T) {
 	source := "testcopydir"
-	os.Mkdir(source, 0744)
+	os.Mkdir(source, 0644)
 	dest := filepath.Join(testdataDir, source)
 	defer os.Remove(dest)
 
@@ -266,7 +266,7 @@ func TestCopy(t *testing.T) {
 
 func TestCopyDirNewtimes(t *testing.T) {
 	source := "testcopydir"
-	os.Mkdir(source, 0744)
+	os.Mkdir(source, 0644)
 	dest := filepath.Join(testdataDir, source)
 	defer os.Remove(dest)
 
