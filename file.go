@@ -79,7 +79,7 @@ func (GuluFile) WriteFileSaferByHandle(handle *os.File, data []byte) (err error)
 	dir, name := filepath.Split(writePath)
 
 	tmp := filepath.Join(dir, name+Rand.String(7)+".tmp")
-	f, err := os.OpenFile(tmp, os.O_RDWR|os.O_CREATE|os.O_EXCL, 0600)
+	f, err := os.OpenFile(tmp, os.O_RDWR|os.O_CREATE|os.O_EXCL, 0700)
 	if nil != err {
 		return err
 	}
@@ -110,7 +110,7 @@ func (GuluFile) WriteFileSaferByHandle(handle *os.File, data []byte) (err error)
 func (GuluFile) WriteFileSaferByReader(writePath string, reader io.Reader, perm os.FileMode) (err error) {
 	dir, name := filepath.Split(writePath)
 	tmp := filepath.Join(dir, name+Rand.String(7)+".tmp")
-	f, err := os.OpenFile(tmp, os.O_RDWR|os.O_CREATE|os.O_EXCL, 0600)
+	f, err := os.OpenFile(tmp, os.O_RDWR|os.O_CREATE|os.O_EXCL, 0700)
 	if nil != err {
 		return
 	}
@@ -141,7 +141,7 @@ func (GuluFile) WriteFileSaferByReader(writePath string, reader io.Reader, perm 
 func (GuluFile) WriteFileSaferWithoutChangeTime(writePath string, data []byte, perm os.FileMode) (err error) {
 	dir, name := filepath.Split(writePath)
 	tmp := filepath.Join(dir, name+Rand.String(7)+".tmp")
-	f, err := os.OpenFile(tmp, os.O_RDWR|os.O_CREATE|os.O_EXCL, 0600)
+	f, err := os.OpenFile(tmp, os.O_RDWR|os.O_CREATE|os.O_EXCL, 0700)
 	if nil != err {
 		return
 	}
@@ -181,7 +181,7 @@ func (GuluFile) WriteFileSaferWithoutChangeTime(writePath string, data []byte, p
 func (GuluFile) WriteFileSafer(writePath string, data []byte, perm os.FileMode) (err error) {
 	dir, name := filepath.Split(writePath)
 	tmp := filepath.Join(dir, name+Rand.String(7)+".tmp")
-	f, err := os.OpenFile(tmp, os.O_RDWR|os.O_CREATE|os.O_EXCL, 0600)
+	f, err := os.OpenFile(tmp, os.O_RDWR|os.O_CREATE|os.O_EXCL, 0700)
 	if nil != err {
 		return
 	}
